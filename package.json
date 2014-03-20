@@ -1,0 +1,23 @@
+{
+	"name": "skmatc",
+	"version": "1.0.0",
+	"author": "Benjamin Pannell <admin@sierrasoftworks.com>",
+	"description": "Automatic schematic validation for JavaScript objects",
+	"website": "https://sierrasoftworks.com/skmatc",
+
+	"licence": "MIT",
+	"repository": "https://github.com/SierraSoftworks/skmatc",
+
+	"scripts": {
+		"test": "mocha"
+	},
+
+	"dependencies": {
+		"lodash": "*"
+	},
+
+	"devDependencies": {
+		"mocha": "*",
+		"should": "*"
+	}
+}
