@@ -1,4 +1,4 @@
-# Skmatc
+# Skmatc (schematic)
 **Automatic Schematic Validation for JavaScript Objects**
 
 Skmatc provides an extremely powerful, extensible schema validation tool which we developed for [Iridium](https://sierrasoftworks.com/iridium). It gives you the ability to flexibly validate JavaScript objects against a schema to ensure data integrity and add structure to otherwise unstructured data.
@@ -148,17 +148,17 @@ matches = 'spartan563';
 ```
 
 ## Custom Validators
-Custom validators are created by subclassing the `skmatc.Validator` to implement your own `handles` and `validate` methods. To make your life a little easier, we've included the `skmatc.Validator.create` and `skmatc.Validator.module` functions which handle the subclassing for you.
+Custom validators are created by subclassing the `skmatc.Validator` to implement your own `handles` and `validate` methods. To make your life a little easier, we've included the `skmatc.create` function which handles the subclassing for you.
 
 You can load validators into a specific `skmatc` instance, or present a validator module to `skmatc` for global inclusion in all future instances. Validator modules are expected to be composed of a function which recieves a `skmatc` instance as its only argument and returns a `skmatc.Validator`.
 
 ### Validator Modules
-Validator modules are loaded automatically by all future `skmatc` instances upon initialization and can be created by using the `skmatc.Validator.module(handles, validate)` function.
+Validator modules are loaded automatically by all future `skmatc` instances upon initialization and can be created by using the `skmatc.create(handles, validate)` function.
 
 ```javascript
 var skmatc = require('skmatc');
 
-skmatc.validators.push(skmatc.Validator.module(function(schema) {
+skmatc.register(skmatc.create(function(schema) {
 	// Decide whether this validator can handle the schema type
 	return schema == 'custom';
 }, function(schema, data, path) {
@@ -167,12 +167,12 @@ skmatc.validators.push(skmatc.Validator.module(function(schema) {
 ```
 
 ### Validators
-If you wish to load a validator into a specific `skmatc` instance then you will need link the validator to `skmatc` manually - this can be done using the `skmatc.Validator.create(skmatc, handles, validate)` function.
+If you wish to load a validator into a specific `skmatc` instance then you will need link the validator to `skmatc` manually - this can be done using the `skmatc.create(handles, validate)` function.
 
 ```javascript
 var skmatc = require('skmatc');
 var schema = new skmatc({ });
-schema.validators.push(skmatc.Validator.creare(schema, function(schema) {
+schema.register(skmatc.create(schema, function(schema) {
 	// Decide whether this validator can handle the schema type
 	return schema == 'custom';
 }, function(schema, data, path) {
