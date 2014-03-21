@@ -17,6 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Compile Include="test\arrays.js" />
+    <Compile Include="test\controls.js" />
     <Compile Include="test\custom.js" />
     <Compile Include="test\objects.js" />
     <Compile Include="test\regexp.js" />
