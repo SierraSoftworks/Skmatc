@@ -1,14 +1,11 @@
- export declare class Skmatc {
-	constructor(schema: any);
+export declare function scope(schema: any): Skmatc;
 
-	static validators: Validator[];
-	static Validator: typeof Validator;
-	static Result: typeof Result;
-	static Failure: typeof Failure;
-	static create(handles: (schema: any) => boolean, validate: (schema: any, data: any, path: string) => Result, options?: { name?: string }): Validator;
-	static validate(validators: Validator[], schema: any, data: any, path?: string): Result;
-	static register(validator: Validator);
+export declare var validators: Validator[];
+export declare function create(handles: (schema: any) => boolean, validate: (schema: any, data: any, path: string) => Result, options?: { name?: string }): Validator;
+export declare function validate(validators: Validator[], schema: any, data: any, path?: string): Result;
+export declare function register(validator: Validator);
 
+export declare class Skmatc {
 	schema: any;
 	validators: Validator[];
 	validate(data: any, path?: string): Result;
