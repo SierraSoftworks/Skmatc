@@ -1,6 +1,6 @@
 {
   "name": "skmatc",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "author": "Benjamin Pannell <admin@sierrasoftworks.com>",
   "description": "Automatic schematic validation for JavaScript objects",
   "website": "https://sierrasoftworks.com/skmatc",
