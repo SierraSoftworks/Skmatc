@@ -10,10 +10,10 @@
     "test": "mocha"
   },
   "dependencies": {
-    "lodash": "*"
+    "lodash": "^4.5.1"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
   }
 }
