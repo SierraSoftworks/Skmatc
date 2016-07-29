@@ -1,7 +1,7 @@
 export declare function scope(schema: any): Skmatc;
 
 export declare var validators: Validator[];
-export declare function create(handles: (schema: any) => boolean, validate: (schema: any, data: any, path: string) => Result, options?: { name?: string }): Validator;
+export declare function create(handles: (schema: any) => boolean, validate: IValidationHandler, options?: { name?: string }): Validator;
 export declare function validate(validators: Validator[], schema: any, data: any, path?: string): Result;
 export declare function register(validator: Validator);
 
@@ -14,8 +14,8 @@ export declare class Skmatc {
 
 export declare class Validator {
 	constructor(skmatc: Skmatc, options?: any);
-	static create(handles: (schema: any) => boolean, validate: (schema: any, data: any, path: string) => Result, options?: { name?: string }): Validator;
-	static module(handles: (schema: any) => boolean, validate: (schema: any, data: any, path: string) => Result, options?: { name?: string }): Validator;
+	static create(handles: (schema: any) => boolean, validate: IValidationHandler, options?: { name?: string }): Validator;
+	static module(handles: (schema: any) => boolean, validate: IValidationHandler, options?: { name?: string }): Validator;
 
 	name: string;
 	skmatc: Skmatc;
@@ -46,11 +46,9 @@ export declare class Failure {
 	message: string;
 }
 
-export declare interface IValidationHandler {
-	(thisArg: {
+export declare type IValidationHandler = (this: {
 		validator: IValidationHandler;
 		skmatc: Skmatc;
-		fail(message?: string);
-		assert(test: boolean, message?: string);
-	}, schema: any, data: any, path: string): Result;
-}
+		fail(message?: string): Result;
+		assert(test: boolean, message?: string): Result;
+	}, schema: any, data: any, path: string) => Result;
