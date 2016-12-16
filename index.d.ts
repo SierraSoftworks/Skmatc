@@ -3,13 +3,13 @@ export declare function scope(schema: any): Skmatc;
 export declare var validators: Validator[];
 export declare function create(handles: (schema: any) => boolean, validate: IValidationHandler, options?: { name?: string }): Validator;
 export declare function validate(validators: Validator[], schema: any, data: any, path?: string): Result;
-export declare function register(validator: Validator);
+export declare function register(validator: Validator): void;
 
 export declare class Skmatc {
 	schema: any;
 	validators: Validator[];
 	validate(data: any, path?: string): Result;
-	register(validator: Validator);
+	register(validator: Validator): void;
 }
 
 export declare class Validator {
