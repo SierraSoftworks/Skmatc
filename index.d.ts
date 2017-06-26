@@ -49,6 +49,6 @@ export declare class Failure {
 export declare type IValidationHandler = (this: {
 		validator: IValidationHandler;
 		skmatc: Skmatc;
-		fail(message?: string): Result;
-		assert(test: boolean, message?: string): Result;
-	}, schema: any, data: any, path: string) => Result;
+		fail(message?: string): Failure;
+		assert(test: boolean, message?: string): Failure|never;
+	}, schema: any, data: any, path: string) => Failure|never;
